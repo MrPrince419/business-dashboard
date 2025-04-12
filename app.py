@@ -143,6 +143,70 @@ fig2.update_layout(
 )
 st.plotly_chart(fig2)
 
+# Profitability Insights
+st.markdown("## Profitability Insights")
+
+# Add a switch to toggle between categories and products
+view_option = st.radio("View Profitability Insights for:", ["Categories", "Products"])
+
+if view_option == "Categories" and 'Category' in data.columns:
+    profitability = data.groupby('Category').agg({'Profit': 'sum', 'Sales': 'sum'}).reset_index()
+    profitability['Profit Margin (%)'] = (profitability['Profit'] / profitability['Sales']) * 100
+    most_profitable = profitability.sort_values(by='Profit Margin (%)', ascending=False).head(3)
+    least_profitable = profitability.sort_values(by='Profit Margin (%)').head(3)
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("### Top 3 Most Profitable Categories")
+        fig_most_profitable = go.Figure(data=[go.Pie(
+            labels=most_profitable['Category'],
+            values=most_profitable['Profit Margin (%)'],
+            hole=0.4
+        )])
+        fig_most_profitable.update_layout(title="Most Profitable Categories")
+        st.plotly_chart(fig_most_profitable)
+
+    with col2:
+        st.markdown("### Top 3 Least Profitable Categories")
+        fig_least_profitable = go.Figure(data=[go.Pie(
+            labels=least_profitable['Category'],
+            values=least_profitable['Profit Margin (%)'],
+            hole=0.4
+        )])
+        fig_least_profitable.update_layout(title="Least Profitable Categories")
+        st.plotly_chart(fig_least_profitable)
+
+elif view_option == "Products" and 'Product' in data.columns:
+    profitability = data.groupby('Product').agg({'Profit': 'sum', 'Sales': 'sum'}).reset_index()
+    profitability['Profit Margin (%)'] = (profitability['Profit'] / profitability['Sales']) * 100
+    most_profitable = profitability.sort_values(by='Profit Margin (%)', ascending=False).head(3)
+    least_profitable = profitability.sort_values(by='Profit Margin (%)').head(3)
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("### Top 3 Most Profitable Products")
+        fig_most_profitable = go.Figure(data=[go.Pie(
+            labels=most_profitable['Product'],
+            values=most_profitable['Profit Margin (%)'],
+            hole=0.4
+        )])
+        fig_most_profitable.update_layout(title="Most Profitable Products")
+        st.plotly_chart(fig_most_profitable)
+
+    with col2:
+        st.markdown("### Top 3 Least Profitable Products")
+        fig_least_profitable = go.Figure(data=[go.Pie(
+            labels=least_profitable['Product'],
+            values=least_profitable['Profit Margin (%)'],
+            hole=0.4
+        )])
+        fig_least_profitable.update_layout(title="Least Profitable Products")
+        st.plotly_chart(fig_least_profitable)
+else:
+    st.warning("The selected option is not available in the uploaded data.")
+
 # Forecast Accuracy
 st.markdown("## Forecast Accuracy")
 if 'Actual' in forecast.columns:  # Assuming 'Actual' column exists in forecast
@@ -195,38 +259,6 @@ st.plotly_chart(fig2)
 
 # Export Section
 st.markdown("## Share or Download")
-b1, b2 = st.columns(2)
-with b1:
-    csv = data.to_csv(index=False).encode('utf-8')
-    st.download_button("Download Data as CSV", csv, "filtered_data.csv", "text/csv")
-
-def export_to_pdf():
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)
-    pdf.cell(200, 10, txt="Business Dashboard Report", ln=True, align='C')
-    pdf.cell(200, 10, txt=f"Total Revenue: ${data['Sales'].sum():,.2f}".encode("latin1", errors="replace").decode("latin1"), ln=True)
-    pdf.cell(200, 10, txt=f"Total Profit: ${data['Profit'].sum():,.2f}".encode("latin1", errors="replace").decode("latin1"), ln=True)
-    date_line = f"Date Range: {data['Order Date'].min().date()} -> {data['Order Date'].max().date()}"
-    pdf.cell(200, 10, txt=date_line.encode("latin1", errors="replace").decode("latin1"), ln=True)
-    
-    pdf.cell(200, 10, txt="Anomalies Summary:", ln=True)
-    for _, row in monthly_revenue.iterrows():
-        anomaly_line = f"{row['Month'].date()}: {row['Type']} (${row['Sales']:,.2f})"
-        pdf.cell(200, 10, txt=anomaly_line.encode("latin1", errors="replace").decode("latin1"), ln=True)
-    
-    pdf.cell(200, 10, txt="Forecast Summary:", ln=True)
-    for _, row in forecast[['ds', 'yhat']].tail(5).iterrows():
-        forecast_line = f"{row['ds'].date()}: ${row['yhat']:,.2f}"
-        pdf.cell(200, 10, txt=forecast_line.encode("latin1", errors="replace").decode("latin1"), ln=True)
-    
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmpfile:
-        pdf.output(tmpfile.name)
-        return tmpfile.name
-
-with b2:
-    if st.button("Export Report as PDF"):
-        pdf_path = export_to_pdf()
-        with open(pdf_path, "rb") as pdf_file:
-            st.download_button("Download PDF Report", pdf_file, "dashboard_report.pdf", "application/pdf")
+csv = data.to_csv(index=False).encode('utf-8')
+st.download_button("Download Data as CSV", csv, "filtered_data.csv", "text/csv")
 
