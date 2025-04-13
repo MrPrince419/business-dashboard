@@ -1,68 +1,58 @@
-# Data-Analysis-Web-App
+# Business Dashboard
 
 ![Python](https://img.shields.io/badge/Python-3.8-blueviolet)
-![Framework](https://img.shields.io/badge/Framework-sreamlit-red)
+![Framework](https://img.shields.io/badge/Framework-streamlit-red)
 
+#### **Business Dashboard** is a web application designed for small businesses to analyze and visualize their data effectively.
 
-#### **Data Analysis Web App** can analysis data in multiple formates(csv, txt, xls, xlsx, ods, odt) and gives shows you the analysis in the most informative way. 
+## Features Of Business Dashboard
+- Supports **Multiple file formats** (CSV, Excel, etc.).
+- Provides a **detailed overview** of your data.
+- Allows you to **filter data** by date and category.
+- Offers **KPI metrics** for quick insights.
+- Enables **sales forecasting** using advanced models.
+- Detects **anomalies** in revenue trends.
+- Allows you to **download/export** your filtered data.
 
+## How to Use the Business Dashboard
 
-## Features Of Data Analysis Web App
-- Supports **Multiple file formates**(csv, txt, xls, xlsx, ods, odt).
-- Gives a **detailed overview** of your data.
-- You have the option to **plot graphs** for your data.
-- You can see **Outliers** in your data in a visulization way.
-- You can **drop multiple columns** and **rename columns**.
-- You can *drop* **multiple categorical Rows** and **Numerical Rows** by giving **multiple conditions**.
-- Handling **Handling Missing Data**, **Merging On Index** and **Concatenating On Axis**
-- You can **download/export** your edited data.
+1. **Uploading Data**:
+   - Upload your business data in CSV or Excel format.
+   - Ensure the file contains required columns like `Order Date`, `Sales`, and `Profit`.
 
-## Upcomming Features for the WebApp:
-- More **Supporting data Formates**.
-- **Improving the UI** of the WEB APP.
-- More **Detailed Analysis** of The data.
-- And many more... 
+2. **Filtering Data**:
+   - Filter data by date range and categories to focus on specific insights.
 
+3. **Analyzing KPIs**:
+   - View key metrics such as Total Revenue, Total Profit, and Average Order Value.
 
-Check out the live demo: https://data-analysis-webapp.herokuapp.com/
+4. **Forecasting Sales**:
+   - Use the forecasting tool to predict future sales and profits.
 
-### Vedio demo:
-<p><img  alt="GIF" src="https://github.com/everydaycodings/Data-Analysis-Web-App/blob/master/presentation/vedio.gif" width="800" height="450" /></p>
+5. **Anomaly Detection**:
+   - Identify spikes and drops in revenue using the anomaly detection feature.
 
-# Note
+6. **Exporting Data**:
+   - Download filtered data as a CSV file for further analysis.
 
-> #### Use this URL - [Click Me](https://github.com/everydaycodings/Data-Analysis-Web-App/issues/new) - in case if you are faccing any problem with th WebApp or source code.
-
-
-
-Source Code: [github link](https://github.com/everydaycodings/Data-Analysis-Web-App)
-
-
-## How to run the project?
+## How to Run the Project
 
 1. Clone or download this repository to your local machine.
-2. Install all the libraries mentioned in the [requirements.txt](https://github.com/everydaycodings/Data-Analysis-Web-App/blob/master/requirements.txt) file with the command `pip3 install -r requirements.txt`
-3. Open your terminal/command prompt from your project directory and run the file `app.py` by executing the command `streamlit run app.py`.
-4. You will be automatically redirected the your localhost in brower where you can see you WebApp in live.
+2. Install all the libraries mentioned in the `requirements.txt` file with the command:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Open your terminal/command prompt from your project directory and run the file `app.py` by executing the command:
+   ```bash
+   streamlit run app.py
+   ```
+4. You will be automatically redirected to your localhost in the browser where you can see your WebApp live.
 
-## Architecture of your Project Home Directory
-<p><img  alt="GIF" src="https://github.com/everydaycodings/files-for-multiplethings/blob/master/rt32.png" width="240" height="410" /></p>
+## Upcoming Features
+- Improved UI for better user experience.
+- More detailed analysis options.
+- Support for additional data formats.
 
+---
 
-### If you Use this Code for Any Commercial Purpose. Please Don't Forget To mention or give shoutout to [everydaycodings](https://github.com/everydaycodings).
-
-### Donate If you fell this Web App Makes your work a bit easy.
-
-#### Binance (BNB)
-```
-0x846d778c4714830C8cdcB2Af85F76544CFf0d9A1
-```
-#### Cardano(ADA)
-```
-addr1q8fstx3ut2nfhrv9e324tyfdp2uwcvy0uree3junwll5y5p7lnnqpnq6ufjh4qfkul9tvx49udsnyq7vmst6huvngyss72e63v
-```
-
-#### Bitcoin(BTC)
-```
-bc1qutf2e707aglx8wqmf4x8e7rzxaunmxlcnpyxqr
-```
+Source Code: [GitHub Repository](https://github.com/everydaycodings/Data-Analysis-Web-App)

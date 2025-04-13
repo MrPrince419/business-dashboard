@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from prophet import Prophet
 import plotly.graph_objects as go
+from helper import download_data, describe, drop_items, rename_columns, handling_missing_values, clear_image_cache
 
 # Page setup
 st.set_page_config(page_title="Business Dashboard", layout="wide", page_icon="📈")
