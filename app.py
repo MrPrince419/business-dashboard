@@ -5,6 +5,9 @@ import plotly.graph_objects as go
 from helper import download_data, describe, drop_items, rename_columns, handling_missing_values, clear_image_cache
 import streamlit.components.v1 as components
 
+# Page setup
+st.set_page_config(page_title="Business Dashboard", layout="wide", page_icon="📈")
+
 # Inject Google Tag (gtag.js)
 google_tag = """\
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5FSLZTQ3V"></script>
@@ -18,8 +21,6 @@ google_tag = """\
 """
 components.html(google_tag, height=0)
 
-# Page setup
-st.set_page_config(page_title="Business Dashboard", layout="wide", page_icon="📈")
 st.title("📈 Business Dashboard")
 
 # Upload Section
