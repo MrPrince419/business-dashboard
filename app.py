@@ -8,19 +8,6 @@ import streamlit.components.v1 as components
 # Page setup
 st.set_page_config(page_title="Business Dashboard", layout="wide", page_icon="📈")
 
-# Inject Google Tag (gtag.js)
-google_tag = """\
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W5FSLZTQ3V"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-W5FSLZTQ3V');
-</script>
-"""
-components.html(google_tag, height=0)
-
 st.title("📈 Business Dashboard")
 
 # Upload Section
