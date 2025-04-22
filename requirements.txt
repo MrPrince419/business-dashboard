@@ -1,3 +1,4 @@
+# Added missing dependencies
 streamlit
 pandas
 numpy
@@ -12,3 +13,4 @@ fpdf
 plotly
 prophet
 kaleido
+requests
