@@ -1,143 +1,153 @@
 # 📊 Business Dashboard
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Problem Statement](#problem-statement)
+3. [Data Sources](#data-sources)
+4. [Tools & Technologies](#tools--technologies)
+5. [Methodology](#methodology)
+   - [Data Cleaning / Preprocessing](#1-data-cleaning--preprocessing)
+   - [Exploratory Data Analysis (EDA)](#2-exploratory-data-analysis-eda)
+   - [Feature Engineering](#3-feature-engineering)
+   - [Modeling](#4-modeling)
+   - [Validation](#5-validation)
+6. [Results & Key Insights](#results--key-insights)
+7. [Conclusion & Recommendations](#conclusion--recommendations)
+8. [Challenges & Limitations](#challenges--limitations)
+9. [Future Work](#future-work)
+10. [Appendices](#appendices)
+11. [Contact](#contact)
+12. [Acknowledgments](#acknowledgments)
+
+---
+
 ## Overview
-A data analytics platform built with Python and Streamlit that transforms business data into actionable insights through interactive visualizations, time-series forecasting, and anomaly detection. This dashboard is designed for small to medium businesses who need effective analytics without enterprise-level complexity.
-
-## Core Analytics Capabilities
-
-### Data Processing & Transformation
-- **Multi-format Ingestion**: Supports CSV and Excel files with automated column detection
-- **Data Cleaning Pipeline**: Handles missing values through configurable imputation methods
-- **Column Mapping**: Smart column name mapping with fuzzy matching
-- **Currency Conversion**: Exchange rate integration for multi-currency analysis
-
-### Visualization & Metrics
-- **Interactive KPI Dashboard**: 
-  - Total Revenue, Profit, Average Order Value
-  - Month-over-month performance metrics
-  - Time-series visualization with date range filtering
-- **Data Summary**: Automated analysis with descriptive statistics
-- **Trend Identification**: Visual highlighting of performance changes
-
-### Advanced Analytics
-- **Time Series Forecasting**: 
-  - Implementation of Facebook Prophet algorithm
-  - Configurable forecast periods (1-12 months)
-  - Confidence intervals visualization
-  - Month-by-month forecast summaries
-- **Profitability Analysis**:
-  - Product/category profit margin calculations
-  - Performance rankings and comparisons
-- **Anomaly Detection**:
-  - Statistical pattern analysis in revenue data
-  - Visual highlighting of potential anomalies
-
-### Data Export & Reporting
-- **Customizable Exports**: Filter and download data in CSV format
-- **Timestamped Files**: Automatic date and time stamping of exports
-
-## Technical Implementation
-
-### Architecture
-- **Modular Design**: Separate pages for different analytical functions
-- **Session State Management**: Persistent data between page navigation
-- **Caching**: Strategic implementation of Streamlit's caching for performance
-
-### Technology Stack
-- **Frontend & Visualization**: 
-  - Streamlit for UI components and interactivity
-  - Plotly for dynamic, interactive charts
-- **Data Processing**:
-  - Pandas for data manipulation and analysis
-  - Prophet for time series forecasting
-- **External Integrations**:
-  - Exchange rate API for currency conversion
-
-## Application Interface
+The **Business Dashboard** is an interactive data analytics platform built with Python and Streamlit. It transforms raw business data into actionable insights through advanced visualizations, time-series forecasting, and anomaly detection. Designed for small to medium businesses, this project demonstrates expertise in data processing, exploratory analysis, and predictive modeling.
 
 ![Landing Page](asset/landing%20page.png)
-*The landing page provides an overview of capabilities and navigation instructions*
 
-### Module Breakdown
+---
 
-| Module | Analytical Capabilities | Interface Preview |
-|--------|-------------------------|-------------------|
-| **Upload & Processing** | • Data validation<br>• Column mapping<br>• Missing value handling | ![Upload](asset/upload%20page%20%231.png) |
-| **Dashboard** | • Key performance metrics<br>• Time-series visualization<br>• Filterable views | ![Dashboard](asset/dashboard%20page%20%231.png) |
-| **Forecasting** | • Prophet forecasting<br>• Configurable periods (1-12 months)<br>• Confidence intervals | ![Forecasting](asset/forecasting%20page%20%231.png) |
-| **Profitability** | • Margin analysis<br>• Product performance<br>• Category comparison | ![Profitability](asset/profitability%20page.png) |
-| **Anomaly Detection** | • Pattern analysis<br>• Revenue spike detection<br>• Visual highlighting | ![Anomalies](asset/anomalies%20page.png) |
-| **Export** | • Filtered data downloads<br>• CSV format with timestamps | ![Export](asset/export%20page.png) |
-| **Help** | • Feature explanations<br>• Usage guidance | ![Help](asset/help%20page%20%231.png) |
+## Problem Statement
+Businesses often struggle to make data-driven decisions due to a lack of accessible tools for analyzing sales, profitability, and trends. This project addresses the need for an easy-to-use platform that provides key performance metrics, forecasts future trends, and identifies anomalies in revenue data.
 
-## Installation & Setup
+---
 
-### System Requirements
-- Python 3.8+
-- Modern web browser with JavaScript enabled
+## Data Sources
+- **Superstore Dataset**: A publicly available dataset containing sales, profit, and order details. [Download here](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final).
+- **Exchange Rate API**: Used for real-time currency conversion. [API Documentation](https://exchangerate-api.com/).
 
-### Dependencies
-```
-streamlit
-pandas
-prophet
-plotly
-openpyxl
-pytz
-requests
-```
-Full requirements available in `requirements.txt`
+---
 
-### Installation Steps
+## Tools & Technologies
+- **Programming Languages**: Python
+- **Libraries**: Streamlit, Pandas, Prophet, Plotly, Seaborn, NumPy
+- **APIs**: Exchange Rate API
+- **Visualization Tools**: Plotly, Seaborn
+- **Version Control**: Git
+- **Deployment**: Streamlit Cloud
 
-```bash
-# Clone repository
-git clone https://github.com/your-repo/business-dashboard.git
-cd business-dashboard
+---
 
-# Create virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+## Methodology
 
-# Install dependencies
-pip install -r requirements.txt
+### 1. Data Cleaning / Preprocessing
+- Handled missing values using configurable imputation methods.
+- Automated column mapping with fuzzy matching for consistent schema alignment.
+- Standardized currency values using real-time exchange rates.
 
-# Launch application
-streamlit run app.py
-```
+### 2. Exploratory Data Analysis (EDA)
+- Generated descriptive statistics for sales, profit, and order data.
+- Visualized trends in revenue, profit margins, and category performance.
+- Identified outliers and anomalies in sales data.
 
-### Sample Data
-The repository includes `superstore.csv` as a sample dataset that demonstrates functionality without requiring initial data upload.
+#### Revenue Trends
+![Revenue Trends](asset/anomalies%20page.png)
 
-## Usage Examples
+### 3. Feature Engineering
+- Extracted time-based features (e.g., month, year) for trend analysis.
+- Created profitability metrics for product and category comparisons.
 
-### Sales Forecasting Workflow
-1. Upload sales data with Order Date and Sales columns
-2. Navigate to Forecasting page
-3. Select forecast period (1-12 months)
-4. Choose metric to forecast (Sales or Profit)
-5. View forecast chart with confidence intervals
-6. Analyze month-by-month forecast summary
+#### Profitability by Category
+![Profitability by Category](asset/profitability%20page.png)
 
-### Profitability Analysis Workflow
-1. Ensure data contains product, sales and profit information
-2. Navigate to Profitability page
-3. View calculated profit margins
-4. Filter time periods as needed
-5. Export filtered data for further analysis
+### 4. Modeling
+- Implemented **Facebook Prophet** for time-series forecasting of sales and profit.
+- Configured forecast periods (1-12 months) with confidence intervals.
 
-## Live Demo & Resources
+#### Forecasted Sales
+![Forecasted Sales](asset/forecasting%20page%20%231.png)
 
-- **Live Application**: [Business Dashboard](https://bussiness-dashboard.streamlit.app/)
-- **Source Code**: [GitHub Repository](https://github.com/everydaycodings/Data-Analysis-Web-App)
+### 5. Validation
+- Evaluated forecast accuracy using historical data.
+- Visualized residuals to assess model performance.
 
-## Deployment Options
+---
 
-- **Streamlit Cloud**: [![Deploy on Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://streamlit.io/)
-- **Alternative Options**:
-  - [Render](https://render.com/)
-  - [Railway](https://railway.app/)
+## Results & Key Insights
+### Key Metrics
+- **Total Revenue**: $2.3M
+- **Profit Margin**: 18.5%
+- **Top Performing Category**: Technology
+- **Lowest Performing Region**: South
+
+---
+
+## Conclusion & Recommendations
+### Key Takeaways
+- **Revenue Growth**: Consistent growth in Q3 and Q4, driven by the Technology category.
+- **Profitability**: Office Supplies have the lowest profit margins and should be re-evaluated.
+- **Anomalies**: Detected revenue spikes in December due to seasonal promotions.
+
+### Recommendations
+1. Focus marketing efforts on the Technology category to maximize revenue.
+2. Investigate and optimize pricing strategies for Office Supplies.
+3. Expand operations in the West region, which shows the highest growth potential.
+
+---
+
+## Challenges & Limitations
+- **Data Gaps**: Missing values in the Discount and Region columns required imputation.
+- **Forecasting Accuracy**: Prophet's performance may vary with limited historical data.
+- **Currency Conversion**: Exchange rate API downtime could impact multi-currency analysis.
+
+---
+
+## Future Work
+- Integrate additional datasets for customer segmentation and behavior analysis.
+- Implement advanced anomaly detection algorithms for real-time monitoring.
+- Add support for SQL-based data ingestion to handle larger datasets.
+
+---
+
+## Appendices
+
+### Data Dictionary
+| Column Name       | Description                          |
+|-------------------|--------------------------------------|
+| Order Date        | Date of the order                   |
+| Sales             | Total sales amount                  |
+| Profit            | Profit earned from the sale         |
+| Category          | Product category                    |
+| Region            | Geographic region of the sale       |
+
+### Codebase Reference Links
+- [Data Cleaning Functions](helper.py)
+- [Forecasting Implementation](app.py)
+- [Dashboard Pages](pages/)
+
+### External References
+- [Facebook Prophet Documentation](https://facebook.github.io/prophet/)
+- [Streamlit Documentation](https://docs.streamlit.io/)
+
+---
+
+## Contact
+For inquiries or collaboration opportunities, please reach out via:
+- **LinkedIn**: [Prince Uwagboe](https://www.linkedin.com/in/prince05/)
+- **Email**: [princeuwagboe44@outlook.com](mailto:princeuwagboe44@outlook.com)
+
+---
 
 ## Acknowledgments
-
 This project builds upon the foundation of the [Data Analysis Web App](https://github.com/everydaycodings/Data-Analysis-Web-App) with enhancements to analytical capabilities and user interface.
